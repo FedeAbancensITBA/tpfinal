@@ -3,7 +3,6 @@
 
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,122 +78,133 @@
 </head>
 
 <body>
-    <div class="area">
-        <ul class="circles">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </div>
-    <div class="main">
-        <div class="popupcontent">
-            <header>
-                <h2>Generador de Certificados</h2>
-                <p id="error" class="explicacion"></p>
-            </header>
-            <div class="ways">
-                <ul>
-                    <li class="active">
-                        Manual
-                    </li>
-                    <li>
-                        Archivo
-                    </li>
-                    <li>
-                        Personalizada
-                    </li>
+    <div>
+        <div class="area">
+            <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="popupcontent">
+                <header>
+                    <h2>Generador de Certificados</h2>
+                    <p id="error" class="explicacion"></p>
+                </header>
+                <div class="ways">
+                    <ul>
+                        <li class="active">
+                            Manual
+                        </li>
+                        <li>
+                            Archivo
+                        </li>
+                        <li>
+                            Personalizada
+                        </li>
 
-                </ul>
-            </div>
-            <div class="sections">
-                <section class="active">
-                    <h3 class="tit">Crear Certificado - Manual</h3>
-                    <select id="category">
-                        <option value="" selected disabled hidden>Tipo de Certificado</option>
-                        <option value="summmer">Consejeros Facheros</option>
-                        <option value="winter" disabled>Scouts de Argentina</option>
-                        <option value="working" disabled>Formación</option>
-                        <option value="road" disabled>Otros</option>
-                      </select>
-                    <input type="text" id="nombre" placeholder="Nombre y Apellido">
-                    <button class="generar" onclick="certFundemos()">Generar</button>
-                </section>
+                    </ul>
+                </div>
+                <div class="sections">
+                    <section class="active">
+                        <h3 class="tit">Crear Certificado - Manual</h3>
+                        <select id="category">
+                            <option value="" selected disabled hidden>Tipo de Certificado</option>
+                            <option value="0">Consejeros Facheros</option>
+                            <option value="1">Compromiso 2020</option>
+                            <option value="2" disabled>Formación</option>
+                            <option value="3" disabled>Otros</option>
+                          </select>
+                        <input type="text" id="nombre" placeholder="Nombre y Apellido">
+                        <input type="text" id="dni" placeholder="DNI">
+                        <button class="generar" onclick="certManual()">Generar</button>
+                    </section>
 
-                <section>
-                    <h3 class="tit">Crear Certificado - CSV</h3>
-                    <p class="explicacion">Para crear certificados en cantidad deberá subir un archivo del tipo
-                        <i>CSV UTF-8 (Comma delimited)</i> con las mismas características que este: <a href="">Ejemplo</a>
-                    </p>
-                    <select id="category">
-                        <option value="" selected disabled hidden>Tipo de Certificado</option>
-                        <option value="summmer" >Consejeros Facheros</option>
-                        <option value="winter" disabled>Scouts de Argentina</option>
-                        <option value="working" disabled>Formación</option>
-                        <option value="road" disabled>Otros</option>
-                      </select>
-                    <input type="file" accept=".csv" id="myFile">
-                    <button class="generar" onclick='processFile()'>Generar</button>
-                </section>
+                    <section>
+                        <h3 class="tit">Crear Certificado - CSV</h3>
+                        <p class="explicacion">Para crear certificados en cantidad deberá subir un archivo del tipo
+                            <i>CSV UTF-8 (Comma delimited)</i> con las mismas características que este: <a href="">Ejemplo</a>
+                        </p>
+                        <select id="category">
+                            <option value="" selected disabled hidden>Tipo de Certificado</option>
+                            <option value="summmer" >Consejeros Facheros</option>
+                            <option value="winter" disabled>Scouts de Argentina</option>
+                            <option value="working" disabled>Formación</option>
+                            <option value="road" disabled>Otros</option>
+                          </select>
+                        <input type="file" accept=".csv" id="myFile">
+                        <button class="generar" onclick='processFile()'>Generar</button>
+                    </section>
 
-                <section>
-                    <h5 class="tit">Fondo del Certificado</h5>
-                    <p class="explicacion">Para crear certificados personalizados deberá transformar su diseño de formato <i>JPG</i> a formato <i>BASE-64</i>. Puede hacerlo en este
-                        <a href="https://base64-image.de/" target="_blank">link</a>. Copie <i>For use in img elements</i></p>
-                    <input type="text" id="img" placeholder="data:image/jpeg;base64..." required>
-                    <div class="container">
-                        <div class="sec1">
-                            <h5>Posición del Nombre y Apellido (en milímetros)</h5>
-                            <div>
-                                <input type="text" id="nx" placeholder="Posición en X " class="med x" required>
-                                <input type="text" id="ny" placeholder="Posición en Y " class="med y" required>
+                    <section>
+                        <h5 class="tit">Fondo del Certificado</h5>
+                        <p class="explicacion">Para crear certificados personalizados deberá transformar su diseño de formato <i>JPG</i> a formato <i>BASE-64</i>. Puede hacerlo en este
+                            <a href="https://base64-image.de/" target="_blank">link</a>. Copie <i>For use in img elements</i></p>
+                        <input type="text" id="img" placeholder="data:image/jpeg;base64..." required>
+                        <div class="container">
+                            <div class="sec1">
+                                <h5>Posición del Nombre y Apellido (en milímetros)</h5>
+                                <div>
+                                    <input type="text" id="nx" placeholder="Posición en X " class="med x" required>
+                                    <input type="text" id="ny" placeholder="Posición en Y " class="med y" required>
+                                </div>
+                            </div>
+                            <div class="sec2">
+                                <h5>Posición del DNI (en milímetros)</h5>
+                                <div>
+                                    <input type="text" id="dx" placeholder="Posición en X " class="med x" required>
+                                    <input type="text" id="dy" placeholder="Posición en Y " class="med y" required>
+                                </div>
+                            </div>
+                            <div class="sec3">
+                                <div class="med x">
+                                    <h5>Tipo de Fuente</h5>
+                                    <select id="fuente" required>                           
+                                        <option value="" selected disabled hidden>Seleccione</option>
+                                        <option value="0">Dosis Semi-Bold</option>
+                                        <option value="1">Ubuntu-Bold</option>
+                                      </select>
+                                </div>
+                                <div class="med y">
+                                    <h5>Tamaño de Fuente (px)</h5>
+                                    <input type="text" id="tam" placeholder="Tamaño" required>
+                                </div>
+
+                            </div>
+                            <div class="sec4">
+                                <h5>Color de la letra (en RGB)</h5>
+                                <div class="row">
+                                    <input type="text" id="r" placeholder="R" required>
+                                    <input type="text" id="g" placeholder="G" required>
+                                    <input type="text" id="b" placeholder="B" required>
+                                </div>
                             </div>
                         </div>
-                        <div class="sec2">
-                            <h5>Posición del DNI (en milímetros)</h5>
-                            <div>
-                                <input type="text" id="dx" placeholder="Posición en X " class="med x" required>
-                                <input type="text" id="dy" placeholder="Posición en Y " class="med y" required>
-                            </div>
-                        </div>
-                        <div class="sec3">
-                            <div class="med x">
-                                <h5>Tipo de Fuente</h5>
-                                <select id="fuente" required>                           
-                                    <option value="" selected disabled hidden>Seleccione</option>
-                                    <option value="0">Dosis Semi-Bold</option>
-                                    <option value="1">Ubuntu-Bold</option>
-                                  </select>
-                            </div>
-                            <div class="med y">
-                                <h5>Tamaño de Fuente (px)</h5>
-                                <input type="text" id="tam" placeholder="Tamaño" required>
-                            </div>
-
-                        </div>
-                        <div class="sec4">
-                            <h5>Color de la letra (en RGB)</h5>
-                            <div class="row">
-                                <input type="text" id="r" placeholder="R" required>
-                                <input type="text" id="g" placeholder="G" required>
-                                <input type="text" id="b" placeholder="B" required>
-                            </div>
-                        </div>
-                    </div>
-                    <h5>Cargar archivo de personas</h5>
-                    <p class="explicacion">Deberá cargar un archivo del tipo CSV UTF-8 (Comma delimited) de dos columnas: la primera será de Nombre y Apellido y la segunda de DNI. No incluya títulos de las columnas.</p>
-                    <input type="file" accept=".csv" id="myCustomFile" required>
-                    <button class="generar" onclick='crearPRO()'>Generar</button>
-                </section>
+                        <h5>Cargar archivo de personas</h5>
+                        <p class="explicacion">Deberá cargar un archivo del tipo CSV UTF-8 (Comma delimited) de dos columnas: la primera será de Nombre y Apellido y la segunda de DNI. No incluya títulos de las columnas.</p>
+                        <input type="file" accept=".csv" id="myCustomFile" required>
+                        <button class="generar" onclick='crearPRO()'>Generar</button>
+                    </section>
+                </div>
             </div>
         </div>
+
     </div>
+    <div class="footer">
+        <p>Desarrollado por
+            <a href="https://www.linkedin.com/in/federico-a-074ba9129/" target="_blank">Federico Abancens</a> - Ver en
+            <a href="https://github.com/FedeAbancensITBA/tpfinal" target="_blank">Github</a>.
+        </p>
+    </div>
+
 </body>
 
 </html>
