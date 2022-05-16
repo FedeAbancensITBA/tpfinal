@@ -100,6 +100,11 @@ function crearPRO() {
     let img = document.getElementById("img").value;
     let fuente = 0;
 
+    if (!nx || !ny || !r || !g || !b || !dx || !dy || !theFile || !selection || !img) {
+        document.getElementById('error').style.color = "red";
+        document.getElementById('error').innerHTML = "Error: Faltan datos";
+    }
+
     if (selection == 1) {
         fuente = 1;
     }
@@ -134,7 +139,7 @@ function crearPRO() {
             alert("This browser does not support HTML5.");
         }
     } else {
-        alert("Please upload a valid CSV file.");
+        //alert("Please upload a valid CSV file.");
     }
 }
 
