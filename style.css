@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 body {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .main {
@@ -31,7 +32,7 @@ body {
 }
 
 .ways {
-    margin: 16px 0px;
+    margin: 7px 0px;
 }
 
 .ways ul {
@@ -68,6 +69,7 @@ body {
 .ways li.active {
     border: 2px solid #1AA1E5;
     color: #66676C;
+    font-weight: bold;
 }
 
 .ways li:not(.active) {
@@ -125,13 +127,14 @@ button {
     cursor: pointer;
     font-size: 16px;
     padding: 15px;
+    text-transform: uppercase;
 }
 
 .generar {
     width: 100%;
-    border: 2px solid #199BD8;
+    border: 2px solid #60B134;
     border-radius: 4px;
-    background-color: #199BD8;
+    background-color: #60B134;
     color: white;
     font-family: 'Ubuntu', sans-serif;
     margin: 0px 0px;
