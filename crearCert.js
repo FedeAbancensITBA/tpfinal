@@ -125,10 +125,23 @@ function crearPRO() {
                     //split csv file using "\n" for new line (each row)
                     var lines = content.split("\r");
                     //loop all rows
-                    for (var count = 0; count < lines.length; count++) {
+                    for (var count = 0; count < lines.length - 1; count++) {
                         var rowContent = lines[count].split(";");
                         if (count > 0) {
                             rowContent[0] = rowContent[0].substring(1, rowContent[0].length)
+                            console.log("Certificado:")
+                            console.log(img);
+                            console.log(nx);
+                            console.log(ny);
+                            console.log(dx);
+                            console.log(dy);
+                            console.log(rowContent[0]);
+                            console.log(rowContent[1]);
+                            console.log(r);
+                            console.log(g);
+                            console.log(b);
+                            console.log(fuente);
+                            console.log(tam);
                             certCustom(img, nx, ny, dx, dy, rowContent[0], rowContent[1], r, g, b, fuente, tam)
                         } else {
                             certCustom(img, nx, ny, dx, dy, rowContent[0], rowContent[1], r, g, b, fuente, tam)
