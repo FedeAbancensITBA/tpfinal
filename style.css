@@ -126,7 +126,7 @@ button:focus {
 #popup2 {
     display: none;
     position: absolute;
-    top: 45%;
+    top: 40%;
     left: 50%;
     background: #fff;
     width: 900px;

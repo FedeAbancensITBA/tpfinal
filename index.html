@@ -179,7 +179,7 @@
                 <section class="active">
                     <h5 class="tit">Fondo del Certificado</h5>
                     <p class="explicacion">Para crear certificados personalizados deberá transformar su diseño de formato <i>JPG</i> a formato <i>BASE-64</i>. Puede hacerlo en este
-                        <a href="https://base64-image.de/ ">link</a>.</p>
+                        <a href="https://base64-image.de/" target="_blank">link</a>.</p>
                     <input type="text" id="img" placeholder="Ingrese el código BASE-64">
 
                     <div class="med x">
@@ -206,6 +206,7 @@
                           </select>
                     </div>
                     <h5>Cargar archivo de personas</h5>
+                    <p class="explicacion">Deberá cargar un archivo del tipo CSV UTF-8 (Comma delimited) de dos columnas: la primera será de Nombre y Apellido y la segunda de DNI. No incluya títulos de las columnas.</p>
                     <input type="file" accept=".csv" id="myCustomFile">
                     <button class="generar" onclick='crearPRO()'>Generar</button>
 
