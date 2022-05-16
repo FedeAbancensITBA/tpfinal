@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+    height: 100vh;
+}
+
+.slider-container {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+.left-slide {
+    height: 100%;
+    width: 35%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.left-slide>div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.left-slide h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    margin-top: -30px;
+}
+
+.right-slide {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 35%;
+    width: 65%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.right-slide>div {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+}
+
+button {
+    background-color: #fff;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 15px;
+}
+
+button:hover {
+    color: #222;
+}
+
+button:focus {
+    outline: none;
+}
+
+.slider-container .action-buttons button {
+    position: absolute;
+    left: 35%;
+    top: 50%;
+    z-index: 100;
+}
+
+.slider-container .action-buttons .down-button {
+    transform: translateX(-100%);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.slider-container .action-buttons .up-button {
+    transform: translateY(-100%);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: #999;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: 100;
+}
+
+#popup {
+    display: none;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    background: #fff;
+    width: 600px;
+    height: auto;
+    margin-left: -300px;
+    /*Half the value of width to center div*/
+    margin-top: -200px;
+    /*Half the value of height to center div*/
+    z-index: 200;
+    border-radius: 8px;
+}
+
+#popup2 {
+    display: none;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    background: #fff;
+    width: 900px;
+    height: auto;
+    margin-left: -450px;
+    /*Half the value of width to center div*/
+    margin-top: -200px;
+    /*Half the value of height to center div*/
+    z-index: 200;
+    border-radius: 8px;
+}
+
+#popupclose {
+    float: right;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#popupclose2 {
+    float: right;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.popupcontent {
+    padding: 20px;
+}
+
+#button {
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 4px;
+    background-color: transparent;
+    color: white;
+    width: 25%;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#button:hover {
+    background-color: white;
+    color: #FFB866;
+}
+
+#button2 {
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 4px;
+    background-color: transparent;
+    color: white;
+    width: 25%;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+#button2:hover {
+    background-color: white;
+    color: #FFB866;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #199BD8;
+    border-radius: 4px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.med {
+    width: 49% !important;
+}
+
+.ter {
+    width: 33% !important;
+}
+
+.x {
+    float: left;
+}
+
+.y {
+    float: right;
+}
+
+select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #199BD8;
+    border-radius: 4px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+input[type=file] {
+    font-family: 'Ubuntu', sans-serif;
+    margin: 10px 0;
+}
+
+.formulario {
+    padding: 20px 20px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.generar {
+    width: 100%;
+    border: 2px solid #199BD8;
+    border-radius: 4px;
+    background-color: #199BD8;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 10px 0px;
+}
+
+.ways {
+    margin: 20px 0px;
+}
+
+.ways ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.ways li {
+    align-self: center;
+    flex: 1;
+    background-color: #F5F7FA;
+    text-align: center;
+    cursor: pointer;
+    padding: 15px 0;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border: 1px solid #ddd;
+}
+
+.ways li:first-child {
+    border-right: 0;
+}
+
+.ways li:last-child {
+    border-left: 0;
+}
+
+.ways li.active {
+    border: 2px solid #1AA1E5;
+    color: #66676C;
+}
+
+
+/*.ways li.active::before {
+    content: '\f00c';
+    font-family: 'fontawesome';
+    color: #1AA1E5;
+}*/
+
+.ways li:not(.active) {
+    padding: 16px 0;
+}
+
+section {
+    display: none;
+}
+
+section.active {
+    display: block;
+}
+
+section input,
+section textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    outline: 0;
+    background-color: #F5F7FA;
+    padding: 10px;
+    margin-bottom: 10px;
+    letter-spacing: 1.4px;
+}
+
+section textarea {
+    min-height: 200px;
+}
+
+
+/*section select {
+    display: none;
+}
+
+*/
+
+.explicacion {
+    font-size: 13px;
+    margin: 5px 0px;
+    color: grey;
+}
+
+.tit {
+    margin: 10px 0px;
+}

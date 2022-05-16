@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Certificados</title>
+    <script src="https://cdn.rawgit.com/yWorks/jsPDF/e2a73c5b/dist/jspdf.min.js"></script>
+    <script src="crearCert.js"></script>
+    <script src="https://cdn.rawgit.com/sphilee/jsPDF-CustomFonts-support/bcc544cd/dist/jspdf.customfonts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        (function($) {
+            $(document).ready(function() {
+                choose()
+                generateOption()
+                selectionOption()
+                removeClass()
+
+                function choose() {
+                    var li = $('.ways li')
+                    var section = $('.sections section')
+                    var index = 0
+                    li.on('click', function() {
+                        index = $(this).index()
+                        $(this).addClass('active')
+                        $(this).siblings().removeClass('active')
+
+                        section.siblings().removeClass('active')
+                        section.eq(index).addClass('active')
+                            /*if (!way) {
+                            way = 1
+                        } else {
+                            way = 0
+                        }*/
+                    })
+                }
+
+                function generateOption() {
+                    var select = $('select option')
+                    var selectAdd = $('.select-option .option')
+                    $.each(select, function(i, val) {
+                        $('.select-option .option').append('<div rel="' + $(val).val() + '">' + $(val).html() + '</div>')
+                    })
+                }
+
+                function selectionOption() {
+                    var select = $('.select-option .head')
+                    var option = $('.select-option .option div')
+
+                    select.on('click', function(event) {
+                        event.stopPropagation()
+                        $('.select-option').addClass('active')
+                    })
+
+                    option.on('click', function() {
+                        var value = $(this).attr('rel')
+                        $('.select-option').removeClass('active')
+                        select.html(value)
+
+                        $('select#category').val(value)
+                    })
+                }
+
+                function removeClass() {
+                    $('body').on('click', function() {
+                        $('.select-option').removeClass('active')
+                    })
+                }
+            })
+        })(jQuery)
+    </script>
+</head>
+
+<body>
+
+    <div class="slider-container">
+        <div class="left-slide">
+            <div style="background-color: #FD3555">
+                <h1>Nature flower</h1>
+                <p>all in pink</p>
+            </div>
+            <div style="background-color: #2A86BA">
+                <h1>Bluuue Sky</h1>
+                <p>with it's mountains</p>
+            </div>
+            <div style="background-color: #252E33">
+                <h1>Lonely castle</h1>
+                <p>in the wilderness</p>
+            </div>
+            <div style="background-color: #FFB866">
+                <h1>Generar Certificados</h1>
+                <p>con un simple formulario</p><br>
+                <div>
+                    <button class="med x" id="button">Rápido</button>
+                    <button class="med y" id="button2">Avanzado</button>
+                </div>
+            </div>
+        </div>
+        <div class="right-slide">
+            <div style="background-image: url('images/1.jpg')"></div>
+            <div style="background-image: url('images/2.jpg')"></div>
+            <div style="background-image: url('images/3.jpg')"></div>
+            <div style="background-image: url('images/4.jpg')"></div>
+        </div>
+        <div class="action-buttons">
+            <button class="down-button">
+          <i class="fas fa-arrow-down"></i>
+        </button>
+            <button class="up-button">
+          <i class="fas fa-arrow-up"></i>
+        </button>
+        </div>
+    </div>
+    <div id="overlay"></div>
+    <div id="popup">
+        <div class="popupcontrols">
+            <span id="popupclose">X</span>
+        </div>
+        <div class="popupcontent">
+            <header>
+                <h2>Generador de Certificados</h2>
+            </header>
+            <div class="ways">
+                <ul>
+                    <li class="active">
+                        Manual
+                    </li>
+                    <li>
+                        Archivo
+                    </li>
+
+                </ul>
+            </div>
+            <div class="sections">
+                <section class="active">
+                    <h3 class="tit">Crear Certificado - Manual</h3>
+                    <select id="category">
+                        <option value="" selected disabled hidden>Tipo de Certificado</option>
+                        <option value="summmer">Fundemos</option>
+                        <option value="winter">Scouts de Argentina</option>
+                        <option value="working">Formación</option>
+                        <option value="road">Otros</option>
+                      </select>
+                    <input type="text" id="nombre" placeholder="Nombre y Apellido">
+                    <button class="generar" onclick="certFundemos()">Generar</button>
+                </section>
+
+                <section>
+                    <h3 class="tit">Crear Certificado - CSV</h3>
+                    <p class="explicacion">Para crear certificados en cantidad deberá subir un archivo del tipo
+                        <i>CSV UTF-8 (Comma delimited)</i> con las mismas características que este: <a href="">Ejemplo</a>
+                    </p>
+                    <select id="category">
+                        <option value="" selected disabled hidden>Tipo de Certificado</option>
+                        <option value="summmer">Fundemos</option>
+                        <option value="winter">Scouts de Argentina</option>
+                        <option value="working">Formación</option>
+                        <option value="road">Otros</option>
+                      </select>
+                    <input type="file" accept=".csv" id="myFile">
+                    <button class="generar" onclick='processFile()'>Generar</button>
+                </section>
+            </div>
+
+        </div>
+    </div>
+    <div id="popup2">
+        <div class="popupcontrols">
+            <span id="popupclose2">X</span>
+        </div>
+        <div class="popupcontent">
+            <header>
+                <h2>Generador de Certificados - Avanzado</h2>
+            </header>
+            <div class="sections">
+                <section class="active">
+                    <h5 class="tit">Fondo del Certificado</h5>
+                    <p class="explicacion">Para crear certificados personalizados deberá transformar su diseño de formato <i>JPG</i> a formato <i>BASE-64</i>. Puede hacerlo en este
+                        <a href="https://base64-image.de/ ">link</a>.</p>
+                    <input type="text" id="img">
+
+                    <div class="med x">
+
+                        <h5>Posición del Nombre y Apellido (en milímetros)</h5>
+                        <input type="text" id="nx" placeholder="Posición en X " class="med x">
+                        <input type="text" id="ny" placeholder="Posición en Y " class="med y">
+                        <h5>Color de la letra (en RGB)</h5>
+                        <div clas="row">
+                            <div class="ter x"><input type="text" id="r" placeholder="R"></div>
+                            <div class="ter x"><input type="text" id="g" placeholder="G"></div>
+                            <div class="ter x"><input type="text" id="b" placeholder="B"></div>
+                        </div>
+                    </div>
+                    <div class="med y">
+                        <h5>Posición del DNI (en milímetros)</h5>
+                        <input type="text" id="dx" placeholder="Posición en X " class="med x">
+                        <input type="text" id="dy" placeholder="Posición en Y " class="med y">
+                        <h5>Tipo de Fuente</h5>
+                        <select id="fuente">                           
+                            <option value="" selected disabled hidden>Seleccione fuente</option>
+                            <option value="summmer">Ubuntu</option>
+                            <option value="winter">Dosis Semi-Bold</option>
+                          </select>
+                    </div>
+                    <h5>Cargar archivo de personas</h5>
+                    <input type="file" accept=".csv" id="myCustomFile">
+                    <button class="generar" onclick='crearPRO()'>Generar</button>
+
+                </section>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div>
+
+    </div>
+
+    <script src="script.js "></script>
+</body>
+
+
+</html>
