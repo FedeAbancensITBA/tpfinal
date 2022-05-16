@@ -98,9 +98,10 @@ function crearPRO() {
     let b = document.getElementById("b").value;
     let selection = document.getElementById("fuente").value;
     let img = document.getElementById("img").value;
+    let tam = document.getElementById("tam").value;
     let fuente = 0;
 
-    if (!nx || !ny || !r || !g || !b || !dx || !dy || !theFile || !selection || !img) {
+    if (!nx || !ny || !r || !g || !b || !dx || !dy || !theFile || !selection || !img || !tam) {
         document.getElementById('error').style.color = "red";
         document.getElementById('error').innerHTML = "Error: Faltan datos";
     }
@@ -127,9 +128,9 @@ function crearPRO() {
                         var rowContent = lines[count].split(";");
                         if (count > 0) {
                             rowContent[0] = rowContent[0].substring(1, rowContent[0].length)
-                            certCustom(img, nx, ny, dx, dy, rowContent[0], rowContent[1], r, g, b, fuente)
+                            certCustom(img, nx, ny, dx, dy, rowContent[0], rowContent[1], r, g, b, fuente, tam)
                         } else {
-                            certCustom(img, nx, ny, dx, dy, rowContent[0], rowContent[1], r, g, b, fuente)
+                            certCustom(img, nx, ny, dx, dy, rowContent[0], rowContent[1], r, g, b, fuente, tam)
                         }
                     }
                 }
@@ -143,13 +144,13 @@ function crearPRO() {
     }
 }
 
-function certCustom(img, nx, ny, dx, dy, nombre, dni, r, g, b, fuente) {
+function certCustom(img, nx, ny, dx, dy, nombre, dni, r, g, b, fuente, tam) {
 
     var doc = new jsPDF('l');
     doc.addFileToVFS("ConsolasHex.ttf", fuentes[fuente]);
     doc.addFont("ConsolasHex.ttf", "ConsolasHex", "Bold");
     doc.setFont("ConsolasHex", "Bold");
-    doc.setFontSize(32);
+    doc.setFontSize(tam);
     doc.setTextColor(r, g, b)
     doc.addImage(img, 'JPEG', 0, 0, 297, 210)
     doc.text(nombre, nx, ny);

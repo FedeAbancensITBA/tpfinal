@@ -188,6 +188,23 @@
                         <h5>Posición del Nombre y Apellido (en milímetros)</h5>
                         <input type="text" id="nx" placeholder="Posición en X " class="med x" required>
                         <input type="text" id="ny" placeholder="Posición en Y " class="med y" required>
+                        <div class="med x">
+                            <h5>Tipo de Fuente</h5>
+                            <select id="fuente" required>                           
+                                <option value="" selected disabled hidden>Seleccione fuente</option>
+                                <option value="0">Dosis Semi-Bold</option>
+                                <option value="1">Ubuntu-Bold</option>
+                              </select>
+                        </div>
+                        <div class="med y">
+                            <h5>Tamaño de Fuente en píxeles</h5>
+                            <input type="text" id="tam" placeholder="Tamaño" required>
+                        </div>
+                    </div>
+                    <div class="med y">
+                        <h5>Posición del DNI (en milímetros)</h5>
+                        <input type="text" id="dx" placeholder="Posición en X " class="med x" required>
+                        <input type="text" id="dy" placeholder="Posición en Y " class="med y" required>
                         <h5>Color de la letra (en RGB)</h5>
                         <div clas="row">
                             <div class="ter x"><input type="text" id="r" placeholder="R" required></div>
@@ -195,25 +212,16 @@
                             <div class="ter x"><input type="text" id="b" placeholder="B" required></div>
                         </div>
                     </div>
-                    <div class="med y">
-                        <h5>Posición del DNI (en milímetros)</h5>
-                        <input type="text" id="dx" placeholder="Posición en X " class="med x" required>
-                        <input type="text" id="dy" placeholder="Posición en Y " class="med y" required>
-                        <h5>Tipo de Fuente</h5>
-                        <select id="fuente" required>                           
-                            <option value="" selected disabled hidden>Seleccione fuente</option>
-                            <option value="0">Dosis Semi-Bold</option>
-                            <option value="1">Ubuntu-Bold</option>
-                          </select>
+                    <div class="end">
+                        <h5>Cargar archivo de personas</h5>
+                        <p class="explicacion">Deberá cargar un archivo del tipo CSV UTF-8 (Comma delimited) de dos columnas: la primera será de Nombre y Apellido y la segunda de DNI. No incluya títulos de las columnas.</p>
+                        <input type="file" accept=".csv" id="myCustomFile" required>
+                        <button class="generar" onclick='crearPRO()'>Generar</button>
                     </div>
-                    <h5>Cargar archivo de personas</h5>
-                    <p class="explicacion">Deberá cargar un archivo del tipo CSV UTF-8 (Comma delimited) de dos columnas: la primera será de Nombre y Apellido y la segunda de DNI. No incluya títulos de las columnas.</p>
-                    <input type="file" accept=".csv" id="myCustomFile" required>
-                    <button class="generar" onclick='crearPRO()'>Generar</button>
+
 
                 </section>
             </div>
-
         </div>
     </div>
 
