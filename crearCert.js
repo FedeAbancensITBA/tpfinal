@@ -139,7 +139,7 @@ function crearPRO() {
                         var rowContent = lines[count].split(";");
                         if (count > 0) {
                             rowContent[0] = rowContent[0].substring(1, rowContent[0].length)
-                            console.log("Certificado:")
+                                /* console.log("Certificado:")
                             console.log(img);
                             console.log(nx);
                             console.log(ny);
@@ -151,7 +151,7 @@ function crearPRO() {
                             console.log(g);
                             console.log(b);
                             console.log(fuente);
-                            console.log(tam);
+                            console.log(tam);*/
                             certCustom(img, nx, ny, dx, dy, rowContent[0], rowContent[1], r, g, b, fuente, tam)
                         } else {
                             certCustom(img, nx, ny, dx, dy, rowContent[0], rowContent[1], r, g, b, fuente, tam)
