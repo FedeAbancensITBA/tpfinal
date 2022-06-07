@@ -44,7 +44,7 @@ function certFundemos2(nombre) {
         doc.addFont("ConsolasHex.ttf", "ConsolasHex", "Bold");
         doc.setFont("ConsolasHex", "Bold");
         doc.setFontSize(50);
-        doc.setTextColor(255, 255, 255)
+        doc.setTextColor(236, 124, 35)
         doc.addImage(fondoFundemos, 'JPEG', 0, 0, 297, 210)
         doc.text(nombre, 155, 99.5);
         let filename = nombre + ".pdf"
